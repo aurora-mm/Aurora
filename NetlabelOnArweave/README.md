@@ -17,7 +17,7 @@ This repository demonstrates how to replicate the Aurora Compilations netlabel -
 3. New release setup:
    * Create a new folder for the release (e.g., `Compilations/22. Aurora 2027 - New Black Gold`).
    * Add mastered and tagged FLAC files along with cover artwork (as `Cover.png` and embedded in the files).
-   * Modify `release.eno` accordingly (it’s easiest to copy the previous release’s `release.eno` and adjust it per your needs). Refer to the Faircamp documentation for further options.
+   * Add and modify `release.eno` accordingly (it’s easiest to copy the previous release’s `release.eno` into the folder and adjust it per your needs). Refer to the Faircamp documentation for further options.
    * Upload the ZIP file(s) to both ArDrive and Internet Archive.
    * Update the links in `release.eno`: `release_download_access:` tag for ArDrive, `link:` tag for Internet Archive. Upload an MP3 reel/preview to Internet Archive.
 4. Run Faircamp: `faircamp --no-clean-urls`
