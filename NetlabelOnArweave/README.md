@@ -8,6 +8,7 @@ This repository demonstrates how to replicate the Aurora Compilations netlabel -
 * Python: see `requirements.txt` for dependencies.
 * Release materials: mastered and tagged FLAC files and cover artwork, provided both as separate files and bundled in a ZIP per release.
 * ArDrive wallet with sufficient AR or Turbo tokens.
+* Internet Archive account.
 
 # Workflow
 
