@@ -13,7 +13,7 @@ This repository demonstrates how to replicate the Aurora Compilations netlabel -
 # Workflow
 
 1. Unzip the `AuroraSkeleton1.zip` and `AuroraSkeleton2.zip` files into a folder of your choice.
-2. Replace the `music.placeholder` files in each folder (e.g., `Compilations/02. Aurora 2024 - Reflect And Improve/music.placeholder`) with the actual FLAC files.
+2. Replace the `music.placeholder` files in each folder (e.g., `Compilations/02. Aurora 2024 - Reflect And Improve/music.placeholder`) with the actual FLAC files available via the label's website.
 3. New release setup:
    * Create a new folder for the release (e.g., `Compilations/22. Aurora 2027 - New Black Gold`).
    * Add mastered and tagged FLAC files along with cover artwork (as `Cover.png` and embedded in the files).
