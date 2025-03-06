@@ -6,7 +6,6 @@ import tempfile
 import shutil
 import requests
 from mutagen.flac import FLAC
-from mutagen.flac import Picture
 
 # The source link
 REMOTE_ZIP_URL = (
