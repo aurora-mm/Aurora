@@ -9,7 +9,7 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 * Release materials: mastered and tagged FLAC files and cover artwork, provided both as separate files and bundled in a ZIP per release.
 * [ArDrive](https://ardrive.io) CLI
 * Arweave wallet with sufficient AR or Turbo tokens.
-* [Internet Archive](https://archive.org) account.
+* (Optional, Aurora-only) [Internet Archive](https://archive.org) account.
 
 # Workflow
 
