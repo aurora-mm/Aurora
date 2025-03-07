@@ -1,13 +1,14 @@
 # Overview
 
-This repository demonstrates how to replicate the [Aurora Compilations](https://aurora-compilations.org) netlabel - built with [Faircamp](https://simonrepp.com/faircamp) - for learning purposes. The guide provides the complete workflow for setting up a netlabel and releasing music using a combination of Arweave and Faircamp. If you're already familiar with generating a Faircamp static website and want to substitute Aurora Compilations website with your own website (most likely), you can skip ahead to step 4 in the workflow. The first three steps are specifically tailored to the Aurora Compilations setup.
+This repository demonstrates how to replicate the [Aurora Compilations](https://aurora-compilations.org) netlabel - built with [Faircamp](https://simonrepp.com/faircamp) - for learning purposes. The guide provides the complete workflow for setting up a netlabel and releasing music using a combination of [Arweave](https://arweave.org) and Faircamp. If you're already familiar with generating a Faircamp static website and want to substitute Aurora Compilations website with your own website (most likely), you can skip ahead to step 4 in the workflow. The first three steps are specifically tailored to the Aurora Compilations setup.
 
 # Prerequisites
 
 * Faircamp, version 1.2 or higher.
 * Python: see `requirements.txt` for dependencies.
 * Release materials: mastered and tagged FLAC files and cover artwork, provided both as separate files and bundled in a ZIP per release.
-* [ArDrive](https://ardrive.io) wallet with sufficient AR or Turbo tokens.
+* [ArDrive](https://ardrive.io) CLI
+* Arweave wallet with sufficient AR or Turbo tokens.
 * [Internet Archive](https://archive.org) account.
 
 # Workflow
