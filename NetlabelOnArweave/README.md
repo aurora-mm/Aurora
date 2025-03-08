@@ -32,10 +32,12 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 8. Run `03.py` to fetch Arweave transactions from ArDrive and match them with the relative paths in the static website:
    * This step is critical for enabling correct music playback: `python 03.py build/aurora-2027-new-black-gold <ardrive-folder-id> --base-prefix '/Aurora Compilations/aurora-2027-new-black-gold'`.
    * Change the variable `ARDRIVE_BIN` before running the script.
-   * If you provide `--dictionary /path/to/dictionary.txt`, the script will skip ArDrive fetching.
-10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in either the `build` folder or in the Faircamp manifests.
+   * If you provide a dictionary, the script will skip ArDrive fetching: `python 03.py build/aurora-2027-new-black-gold --dictionary /path/to/dictionary.txt`.
+9. Run `04.py` to remove (currently broken) cover references in search: `python 04.py /path/to/browser.js`.
+10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in all relevant files in the `build` folder.
 11. Verify that everything works correctly in the `build` folder.
 12. Upload the changed files (all `index.html` files) from the `build` folder to ArDrive.
-13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure your website is functioning correctly. If you use a Deno script as a proxy to map your domain name to Arweave (see [Permaweb Cookbook](https://cookbook.arweave.dev)), update the transaction ID in that script with the transaction ID of the newly generated manifest.
+13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure your website is functioning correctly.
+14. If you use a Deno script as a proxy to map your domain name to Arweave (see [Permaweb Cookbook](https://cookbook.arweave.dev)), update the transaction ID in that script with the transaction ID of the newly generated manifest.
 
 These steps complete the workflow, ensuring that your Faircamp website is properly built, verified, and deployed on Arweave.
