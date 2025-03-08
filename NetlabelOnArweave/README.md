@@ -37,7 +37,7 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in all relevant files in `build`.
 11. Verify that everything works correctly in `build`.
 12. Upload the changed files (all `index.html` files) from `build` to ArDrive.
-13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure your website is functioning correctly.
+13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure it is functioning correctly.
 14. If you use a Deno script as a proxy to map your domain name to Arweave (see [Permaweb Cookbook](https://cookbook.arweave.dev)), update the transaction ID in that script with the transaction ID of the newly generated manifest.
 
 These steps complete the workflow, ensuring that the Faircamp website is properly built, verified, and deployed on Arweave.
