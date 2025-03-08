@@ -40,4 +40,4 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure your website is functioning correctly.
 14. If you use a Deno script as a proxy to map your domain name to Arweave (see [Permaweb Cookbook](https://cookbook.arweave.dev)), update the transaction ID in that script with the transaction ID of the newly generated manifest.
 
-These steps complete the workflow, ensuring that your Faircamp website is properly built, verified, and deployed on Arweave.
+These steps complete the workflow, ensuring that the Faircamp website is properly built, verified, and deployed on Arweave.
