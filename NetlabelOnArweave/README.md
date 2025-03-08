@@ -34,9 +34,9 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
    * Change the variable `ARDRIVE_BIN` before running the script.
    * If you provide a dictionary, the script will skip ArDrive fetching: `python 03.py build/aurora-2027-new-black-gold --dictionary /path/to/dictionary.txt`.
 9. Run `04.py` to remove (currently broken) cover references in search: `python 04.py /path/to/browser.js`.
-10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in all relevant files in the `build` folder.
-11. Verify that everything works correctly in the `build` folder.
-12. Upload the changed files (all `index.html` files) from the `build` folder to ArDrive.
+10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in all relevant files in `build`.
+11. Verify that everything works correctly in `build`.
+12. Upload the changed files (all `index.html` files) from `build` to ArDrive.
 13. Generate the Arweave manifest for the drive you are using on ArDrive. Preview the manifest to ensure your website is functioning correctly.
 14. If you use a Deno script as a proxy to map your domain name to Arweave (see [Permaweb Cookbook](https://cookbook.arweave.dev)), update the transaction ID in that script with the transaction ID of the newly generated manifest.
 
