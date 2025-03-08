@@ -30,7 +30,7 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
    * If you’ve added an artist other than "Various Artists" (for Aurora), upload the corresponding artist folder as well. ArDrive's Turbo feature allows free uploads of small files, making it easy to update static website content as needed.
 7. Ensure that all files are uploaded correctly - they should appear lit green in ArDrive. Do not proceed until you are sure.
 8. Run `03.py` to fetch Arweave transactions from ArDrive and match them with the relative paths in the static website:
-   * This step is critical for enabling correct music playback: `python 03.py build/aurora-2027-new-black-gold ardrive-folder-id --base-prefix '/Aurora Compilations/aurora-2027-new-black-gold'`.
+   * This step is critical for enabling correct music playback: `python 03.py build/aurora-2027-new-black-gold <ardrive-folder-id> --base-prefix '/Aurora Compilations/aurora-2027-new-black-gold'`.
    * Change the variable `ARDRIVE_BIN` before running the script.
    * If you provide `--dictionary /path/to/dictionary.txt`, the script will skip ArDrive fetching.
 10. (Optional) If you notice that the Arweave gateway is down, run `05.py` to change the gateway name in either the `build` folder or in the Faircamp manifests.
