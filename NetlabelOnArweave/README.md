@@ -18,7 +18,7 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 3. New release setup:
    * Create a new folder for the release (e.g., `Compilations/22. Aurora 2027 - New Black Gold`).
    * Add mastered and tagged FLAC files along with cover artwork (provided as `Cover.png` and embedded in the files).
-   * Add and modify `release.eno` accordingly. It’s easiest to copy the previous release’s `release.eno` into the folder and adjust it as needed (refer to [the Faircamp documentation](https://simonrepp.com/faircamp/manual) for further options).
+   * Add and modify `release.eno` accordingly. It’s easiest to copy the previous release’s `release.eno` into the folder and adjust it as needed (refer to [the Faircamp manual](https://simonrepp.com/faircamp/manual) for further options).
    * Run `01.py` on all your ZIP files (`python 01.py file.zip`). This script checks whether the files conform to the standards; proceed only if there are no errors.
    * Upload the ZIP file(s) to both ArDrive and Internet Archive.
    * Update the links in `release.eno`: `release_download_access:` tag for ArDrive, `link:` tag for Internet Archive.
