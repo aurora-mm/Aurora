@@ -35,10 +35,9 @@ def update_html_file(file_path):
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(str(soup))
 
-
 def process_html_in_folder(folder_path):
     """
-    Walks the folder_path recursively, and processes each .html file.
+    Walks the folder_path and processes each .html file.
     """
     for root, dirs, files in os.walk(folder_path):
         for file_name in files:
@@ -46,10 +45,9 @@ def process_html_in_folder(folder_path):
                 full_path = os.path.join(root, file_name)
                 update_html_file(full_path)
 
-
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python script.py <path_to_folder>")
+        print("Usage: python 02.py <path_to_folder>")
         sys.exit(1)
 
     folder_path = sys.argv[1]
