@@ -5,7 +5,7 @@ This repository demonstrates how to replicate the [Aurora Compilations](https://
 # Prerequisites
 
 * Faircamp, version 1.2 or higher.
-* Python: see `requirements.txt` for dependencies.
+* Python: see `requirements.txt` for dependencies (`pip install -r path/to/requirements.txt`).
 * Release materials: mastered and tagged FLAC files and cover artwork, provided both as separate files and bundled in a ZIP per release.
 * [ArDrive](https://ardrive.io) CLI
 * Arweave wallet with sufficient AR or Turbo tokens.
