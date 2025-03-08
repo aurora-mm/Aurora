@@ -7,26 +7,27 @@ import shutil
 import requests
 from mutagen.flac import FLAC
 
-# The source link
+# The source link, do not change
 REMOTE_ZIP_URL = (
     "https://permagate.io/IvkTHQGYtMUWCGtpkFsGTZefQQS9GkNj56QA-q3-8v4/02-Aurora2024-ReflectAndImprove.zip"
 )
 
-
 def unzip_file(zip_path, extract_to):
-    """Unzip a ZIP file to a specified directory."""
+    """
+    Unzip a ZIP file to a specified directory.
+    """
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_to)
 
-
 def download_file(url, destination):
-    """Download a file from a URL to a local destination."""
+    """
+    Download a file from a URL to a local destination.
+    """
     resp = requests.get(url, stream=True)
     resp.raise_for_status()
     with open(destination, 'wb') as f:
         for chunk in resp.iter_content(chunk_size=8192):
             f.write(chunk)
-
 
 def check_filename_pattern(filename):
     """
@@ -38,7 +39,6 @@ def check_filename_pattern(filename):
         return f"Filename does not match 'NN. Artist - Title.flac' pattern: {filename}"
     return None
 
-
 def check_cover_png_existence(folder_path):
     """
     Check if Cover.png exists in the folder path.
@@ -47,7 +47,6 @@ def check_cover_png_existence(folder_path):
     if not os.path.isfile(cover_path):
         return "Cover.png not found in folder"
     return None
-
 
 def check_flac_metadata(file_path):
     """
@@ -109,7 +108,6 @@ def check_flac_metadata(file_path):
 
     return problems
 
-
 def compare_directories(me_dir, remote_dir):
     """
     Compare FLAC files in me_dir with those in remote_dir.
@@ -131,9 +129,10 @@ def compare_directories(me_dir, remote_dir):
     if cover_problem:
         print(cover_problem)
 
-
 def _report_problems_for_file(folder_path, filename, file_full_path):
-    """Helper function to centralize the checks for a given FLAC file."""
+    """
+    Helper function to centralize the checks for a given FLAC file.
+    """
     # Check filename pattern
     filename_problem = check_filename_pattern(filename)
     if filename_problem:
@@ -143,7 +142,6 @@ def _report_problems_for_file(folder_path, filename, file_full_path):
     flac_problems = check_flac_metadata(file_full_path)
     for prob in flac_problems:
         print(f"- {filename}: {prob}")
-
 
 def main():
     if len(sys.argv) < 2:
