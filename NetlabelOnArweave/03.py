@@ -5,6 +5,7 @@ import subprocess
 import urllib.parse
 from bs4 import BeautifulSoup
 
+# Change to your local path to ardrive binary
 ARDRIVE_BIN = "/Users/lrf/.nvm/versions/node/v23.4.0/bin/ardrive"
 
 def fetch_ardrive_data(folder_id):
@@ -60,7 +61,40 @@ def build_file_map(file_list, base_prefix=None):
 
         # Save in dict
         mapping[rel_path] = data_tx_id
+    return mapping
 
+def parse_dictionary_file(dict_path, base_prefix=None):
+    """
+    Parse a two-column dictionary file:
+      (column1 = path, column2 = dataTxId)
+    Returns a dict with key=path, value=dataTxId.
+    Applies the same base_prefix stripping and slash cleanup as in build_file_map.
+    """
+    mapping = {}
+    with open(dict_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue  # skip empty lines
+            # Split from the right, in case paths contain spaces
+            try:
+                path_part, txid_part = line.rsplit(" ", 1)
+            except ValueError:
+                # If there's some malformed line that doesn't contain at least one space
+                continue
+
+            if base_prefix and path_part.startswith(base_prefix):
+                rel_path = path_part[len(base_prefix):]
+            else:
+                rel_path = path_part
+
+            # Strip leading slash if present
+            rel_path = rel_path.lstrip("/\\")
+
+            # Convert backslashes to forward slashes
+            rel_path = rel_path.replace("\\", "/")
+
+            mapping[rel_path] = txid_part
     return mapping
 
 def process_index_html(html_path, file_map):
@@ -101,29 +135,48 @@ def process_index_html(html_path, file_map):
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(str(soup))
 
-
 def main():
     parser = argparse.ArgumentParser(
-        description="Update <audio><source> tags in index.html to point to https://permagate.io/<dataTxId> from ArDrive"
+        description="Update <audio><source> tags in index.html to point to https://permagate.io/<dataTxId> from ArDrive or a local dictionary."
     )
     parser.add_argument("local_folder", help="Local folder where we search for index.html files")
-    parser.add_argument("ardrive_folder_id", help="ArDrive folder ID to fetch (list-files) data from")
+    parser.add_argument("ardrive_folder_id", nargs="?", default=None,
+                        help="ArDrive folder ID to fetch (list-files) data from (optional if --dictionary is used)")
     parser.add_argument("--base-prefix", default=None,
                         help="If your file paths all start with a prefix like '/Aurora Compilations/aurora-2025-threshold', specify it here to strip it out.")
+    parser.add_argument("--dictionary", default=None,
+                        help="Path to a dictionary text file (two columns: path dataTxId). If provided, we'll skip ArDrive fetching and use this mapping.")
+
     args = parser.parse_args()
 
     if not os.path.isdir(args.local_folder):
         print(f"Error: '{args.local_folder}' is not a valid directory.")
         return
 
-    # Fetch file data
-    print(f"Fetching file data for folder ID: {args.ardrive_folder_id}")
-    file_data = fetch_ardrive_data(args.ardrive_folder_id)
-    print(f"Retrieved {len(file_data)} JSON entries from ArDrive.")
+    # If a dictionary file is provided, parse it.
+    # Otherwise, if we have an ardrive_folder_id, fetch data from ArDrive.
+    # If neither is provided, we can't proceed.
+    if args.dictionary:
+        print(f"Using dictionary file: {args.dictionary}")
+        if not os.path.isfile(args.dictionary):
+            print(f"Error: dictionary file '{args.dictionary}' not found.")
+            return
 
-    # Build file mapping from the specified folder ID
-    file_map = build_file_map(file_data, base_prefix=args.base_prefix)
-    print(f"Built a file map with {len(file_map)} entries.")
+        file_map = parse_dictionary_file(args.dictionary, base_prefix=args.base_prefix)
+        print(f"Built a file map from dictionary with {len(file_map)} entries.")
+
+    else:
+        # We expect an ardrive_folder_id in this case
+        if not args.ardrive_folder_id:
+            print("Error: you must provide either --dictionary or ardrive_folder_id.")
+            return
+
+        print(f"Fetching file data for folder ID: {args.ardrive_folder_id}")
+        file_data = fetch_ardrive_data(args.ardrive_folder_id)
+        print(f"Retrieved {len(file_data)} JSON entries from ArDrive.")
+
+        file_map = build_file_map(file_data, base_prefix=args.base_prefix)
+        print(f"Built a file map with {len(file_map)} entries.")
 
     # Find and process all 'index.html' in local_folder
     index_html_paths = []
